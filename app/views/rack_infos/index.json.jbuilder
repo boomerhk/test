@@ -1,0 +1,1 @@
+json.array! @rack_infos, partial: 'rack_infos/rack_info', as: :rack_info

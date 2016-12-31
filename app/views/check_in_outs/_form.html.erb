@@ -1,0 +1,56 @@
+<%= form_for(check_in_out) do |f| %>
+    <% if check_in_out.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(check_in_out.errors.count, "error") %> prohibited this check_in_out from being saved:</h2>
+
+          <ul>
+            <% check_in_out.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :check_in_no %>
+      <%= f.number_field :check_in_no %>
+    </div>
+
+    <div class="field">
+      <%= f.label :customer_code %>
+      <%= f.collection_select :customer_code, Customer.all, :id, :customer_code, {prompt: "Select a customer code"}, {class: "form-control post_title"} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :guest_no %>
+      <%= f.number_field :guest_no, class: "form-control check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :guest_name %>
+      <%= f.text_field :guest_name, class: "form-control check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :guest_email %>
+      <%= f.text_field :guest_email, class: "form-control check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :status %>
+      <%= f.text_field :status, :value => 'Inactive' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :check_in_time %>
+      <%= f.hidden_field :check_in_time, :include_blank => true %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :check_out_time, :include_blank => true %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

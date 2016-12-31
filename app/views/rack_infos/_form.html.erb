@@ -1,0 +1,47 @@
+<%= form_for(rack_info) do |f| %>
+  <% if rack_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rack_info.errors.count, "error") %> prohibited this rack_info from being saved:</h2>
+
+      <ul>
+      <% rack_info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rack_no %>
+    <%= f.text_field :rack_no %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tpye %>
+    <%= f.text_field :tpye %>
+  </div>
+
+  <div class="field">
+    <%= f.label :customer_code %>
+    <%= f.collection_select :customer_code, Customer.all, :id, :customer_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_unit %>
+    <%= f.number_field :total_unit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :low_unit %>
+    <%= f.number_field :low_unit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :height_unit %>
+    <%= f.number_field :height_unit %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

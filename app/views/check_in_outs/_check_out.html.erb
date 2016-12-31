@@ -1,0 +1,40 @@
+<%= form_for(check_in_out, :method => :put) do |f| %>
+    <div class="field">
+      <%= f.label :check_in_no %>
+      <%= f.number_field :check_in_no, class: "form-control check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :customer_code %>
+      <%= f.text_field :customer_code, class: "form-control check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :guest_no %>
+      <%= f.number_field :guest_no, class: "form-control check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :guest_name %>
+      <%= f.text_field :guest_name, class: "form-control check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :guest_email %>
+      <%= f.text_field :guest_email, class: "form-control check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :status %>
+      <%= f.text_field :status, :value => 'Out', class: "form-control check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :check_out_time %>
+      <%= f.datetime_select :check_out_time, :default => Time.now, class: "check_in_out_content" %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :check_out_date, value: Date.today %>
+    </div>
+<% end %>

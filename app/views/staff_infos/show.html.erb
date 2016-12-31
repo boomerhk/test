@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Staff:</strong>
+  <%= @staff_info.staff_id %>
+</p>
+
+<p>
+  <strong>Staff first name:</strong>
+  <%= @staff_info.staff_first_name %>
+</p>
+
+<p>
+  <strong>Staff last name:</strong>
+  <%= @staff_info.staff_last_name %>
+</p>
+
+<p>
+  <strong>Staff email:</strong>
+  <%= @staff_info.staff_email %>
+</p>
+
+<p>
+  <strong>Staff phone:</strong>
+  <%= @staff_info.staff_phone %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @staff_info.department %>
+</p>
+
+<p>
+  <strong>Staff post:</strong>
+  <%= @staff_info.staff_post %>
+</p>
+
+<%= link_to 'Edit', edit_staff_info_path(@staff_info) %> |
+<%= link_to 'Back', staff_infos_path %>

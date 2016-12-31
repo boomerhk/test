@@ -1,0 +1,1 @@
+json.partial! "rack_infos/rack_info", rack_info: @rack_info

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  Dear Sir\Madam,<br><br>
+  Your request is accepted, please keep this email and save the QR code for the filed registration.
+  <p>
+    <i>Here is your registration information,</i><br>
+    <b>Check In No.:</b> RQ-<%= @check_in_out.check_in_no %><br>
+    <b>Customer Code:</b> <%= @check_in_out.customer_code %><br>
+    <b>Guest No.:</b> <%= @check_in_out.guest_no %><br>
+    <b>Guest Name:</b> <%= @check_in_out.guest_name %><br>
+  </p>
+  <p>
+    <b>Check-in QrCode</b><br>
+    <%= image_tag attachments[@check_in_out.check_in_no.to_s+".png"].url -%><br>
+  </p>
+  <p>
+    Best regards,<br>
+    Data Center<br>
+    NOC
+  </p>
+  </body>
+</html>

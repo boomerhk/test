@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Staff Infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Staff</th>
+      <th>Staff first name</th>
+      <th>Staff last name</th>
+      <th>Staff email</th>
+      <th>Staff phone</th>
+      <th>Department</th>
+      <th>Staff post</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staff_infos.each do |staff_info| %>
+      <tr>
+        <td><%= staff_info.staff_id %></td>
+        <td><%= staff_info.staff_first_name %></td>
+        <td><%= staff_info.staff_last_name %></td>
+        <td><%= staff_info.staff_email %></td>
+        <td><%= staff_info.staff_phone %></td>
+        <td><%= staff_info.department %></td>
+        <td><%= staff_info.staff_post %></td>
+        <td><%= link_to 'Show', staff_info %></td>
+        <td><%= link_to 'Edit', edit_staff_info_path(staff_info) %></td>
+        <td><%= link_to 'Destroy', staff_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Staff Info', new_staff_info_path %>

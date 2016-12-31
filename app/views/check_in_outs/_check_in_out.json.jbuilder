@@ -1,0 +1,2 @@
+json.extract! check_in_out, :id, :check_in_no, :customer_code, :customer_staff_id, :status, :check_in_time, :check_out_time, :created_at, :updated_at
+json.url check_in_out_url(check_in_out, format: :json)

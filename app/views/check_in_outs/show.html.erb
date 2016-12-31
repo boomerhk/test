@@ -1,0 +1,52 @@
+<p>
+  <strong>Check in no:</strong>
+  <%= @check_in_out.check_in_no %>
+</p>
+
+<p>
+  <strong>Customer code:</strong>
+  <%= @check_in_out.customer_code %>
+</p>
+
+<p>
+  <strong>Guest no:</strong>
+  <%= @check_in_out.guest_no %>
+</p>
+
+<p>
+  <strong>Guest name:</strong>
+  <%= @check_in_out.guest_name %>
+</p>
+
+<p>
+  <strong>Guest email:</strong>
+  <%= @check_in_out.guest_email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @check_in_out.status %>
+</p>
+
+<p>
+  <strong>Check in time:</strong>
+  <%= @check_in_out.check_in_time %>
+</p>
+
+<p>
+  <strong>Check out time:</strong>
+  <%= @check_in_out.check_out_time %>
+</p>
+
+<p>
+  <strong>Check in date:</strong>
+  <%= @check_in_out.check_in_date %>
+</p>
+
+<p>
+  <strong>Check out date:</strong>
+  <%= @check_in_out.check_out_date %>
+</p>
+
+<%= link_to 'Edit', edit_check_in_out_path(@check_in_out) %> |
+<%= link_to 'Back', check_in_outs_path %>

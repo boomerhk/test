@@ -1,0 +1,2 @@
+json.extract! customer_staff, :id, :customer_code, :customer_staff_id, :staff_first_name, :staff_last_name, :staff_email, :staff_phone, :department, :staff_post, :created_at, :updated_at
+json.url customer_staff_url(customer_staff, format: :json)

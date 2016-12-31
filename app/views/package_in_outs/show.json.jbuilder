@@ -1,0 +1,1 @@
+json.partial! "package_in_outs/package_in_out", package_in_out: @package_in_out

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rack no:</strong>
+  <%= @rack_info.rack_no %>
+</p>
+
+<p>
+  <strong>Tpye:</strong>
+  <%= @rack_info.tpye %>
+</p>
+
+<p>
+  <strong>Customer code:</strong>
+  <%= @rack_info.customer_code %>
+</p>
+
+<p>
+  <strong>Total unit:</strong>
+  <%= @rack_info.total_unit %>
+</p>
+
+<p>
+  <strong>Low unit:</strong>
+  <%= @rack_info.low_unit %>
+</p>
+
+<p>
+  <strong>Height unit:</strong>
+  <%= @rack_info.height_unit %>
+</p>
+
+<%= link_to 'Edit', edit_rack_info_path(@rack_info) %> |
+<%= link_to 'Back', rack_infos_path %>

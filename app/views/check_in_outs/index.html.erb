@@ -1,0 +1,91 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <h1 id="check_in_title" class="pull-left"><span class="glyphicon glyphicon-list-alt"></span> <b><span></span>Check In System</b></h1>
+  </div>
+
+    <p>
+      <%= search_form_for @q, :class=>'form-inline pull-right search_bar' do |f| %>
+          <%= f.date_field :check_in_date_or_check_out_date_eq, class: "form-control" %>
+          <%= f.search_field :check_in_no_eq, :class=>'form-control', placeholder: "Enter RQ number" %>
+          <%= f.submit 'Search', class:"btn btn-outline-success", id: 'search_filter' %>
+          <%= link_to 'Clear Filter', request.path, class:"btn btn-outline-warning", id: 'clear_filter' %>
+      <% end %>
+    </p>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#showall" aria-controls="showall" role="tab" data-toggle="tab">Show all</a></li>
+      <li role="presentation"><a href="#inactive" aria-controls="inactive" role="tab" data-toggle="tab">Inactive</a></li>
+      <li role="presentation"><a href="#in" aria-controls="in" role="tab" data-toggle="tab">Checked In</a></li>
+      <li role="presentation"><a href="#out" aria-controls="out" role="tab" data-toggle="tab">Checked Out</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="showall">
+        <%= render 'check_in_outs/table_show_all' %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="inactive">
+        <%= render 'check_in_outs/tabe_show_inactive' %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="in">
+        <%= render 'check_in_outs/table_show_in' %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="out">
+        <%= render 'check_in_outs/table_show_out' %>
+      </div>
+    </div>
+
+  <br>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#check_in_out_Modal">
+    New Check In Out
+  </button>
+
+  <!-- Modal for create Check-In-Out -->
+  <%= form_for(@check_in_out) do |f| %>
+      <div class="modal fade" id="check_in_out_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel">New Check In Out</h3>
+            </div>
+
+            <div class="modal-body">
+              <div class="field">
+                <%= f.label :check_in_no %>
+                <%= f.number_field :check_in_no, class: "form-control check_in_out_content", :value => CheckInOut.maximum(:check_in_no).next, :readonly => true %>
+              </div>
+              <div class="field">
+                <%= f.label :customer_code %>
+                <%= f.collection_select :customer_code, Customer.all, :id, :customer_code, {prompt: "Select a customer code"}, {class: "form-control post_title"} %>
+              </div>
+              <div class="field">
+                <%= f.label :guest_no %>
+                <%= f.number_field :guest_no, class: "form-control check_in_out_content", :value => CheckInOut.maximum(:guest_no).next, :readonly => true %>
+              </div>
+              <div class="field">
+                <%= f.label :guest_name %>
+                <%= f.text_field :guest_name, class: "form-control check_in_out_content" %>
+              </div>
+              <div class="field">
+                <%= f.label :guest_email %>
+                <%= f.text_field :guest_email, class: "form-control check_in_out_content", :value => 'ivefyptest@gmail.com' %>
+              </div>
+              <div class="field">
+                <%= f.label :status %>
+                <%= f.text_field :status, :value => 'Inactive', class: "form-control check_in_out_content", :readonly => true %>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <%= submit_tag "Create", class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

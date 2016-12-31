@@ -1,0 +1,62 @@
+<%= form_for(package_in_out) do |f| %>
+  <% if package_in_out.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(package_in_out.errors.count, "error") %> prohibited this package_in_out from being saved:</h2>
+
+      <ul>
+      <% package_in_out.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ticket_no %>
+    <%= f.number_field :ticket_no %>
+  </div>
+
+  <div class="field">
+    <%= f.label :customer_code %>
+    <%= f.text_field :customer_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :package_no %>
+    <%= f.text_field :package_no %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Courier %>
+    <%= f.text_field :Courier %>
+  </div>
+
+  <div class="field">
+    <%= f.label :floor %>
+    <%= f.number_field :floor %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :package_in_time %>
+    <%= f.datetime_select :package_in_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :package_out_time %>
+    <%= f.datetime_select :package_out_time %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

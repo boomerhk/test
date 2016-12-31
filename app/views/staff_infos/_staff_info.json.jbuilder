@@ -1,0 +1,2 @@
+json.extract! staff_info, :id, :staff_id, :staff_first_name, :staff_last_name, :staff_email, :staff_phone, :department, :staff_post, :created_at, :updated_at
+json.url staff_info_url(staff_info, format: :json)

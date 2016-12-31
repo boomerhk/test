@@ -1,0 +1,143 @@
+<% if @check_in_out_Inactive.any? %>
+    <table class="table table-hover table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Check in no</th>
+        <th>Customer code</th>
+        <th>Guest no.</th>
+        <th>Guest Name</th>
+        <th>Guest Email</th>
+        <th>Status</th>
+        <th>Check in time</th>
+        <th>Check out time</th>
+        <th colspan="5"></th>
+      </tr>
+      </thead>
+
+      <tbody id="check_in_table">
+      <% @check_in_out_Inactive.each do |check_in_out| %>
+          <tr>
+            <td>RQ-<%= check_in_out.check_in_no %></td>
+            <td><%= check_in_out.customer_code %></td>
+            <td><%= check_in_out.guest_no %></td>
+            <td><%= check_in_out.guest_name %></td>
+            <td><%= check_in_out.guest_email %></td>
+            <td><%= check_in_out.status %></td>
+              <% if check_in_out.check_in_time.nil? %>
+                  <td class="text-center"><span class="glyphicon glyphicon-ban-circle"></span></td>
+              <% else %>
+                  <td><%= check_in_out.check_in_time.strftime('%Y-%m-%d %I:%M %p (%a)') %></td>
+              <% end %>
+
+              <% if check_in_out.check_out_time.nil? %>
+                  <td class="text-center"><span class="glyphicon glyphicon-ban-circle"></span></td>
+              <% else %>
+                  <td><%= check_in_out.check_out_time.strftime('%Y-%m-%d %I:%M %p (%a)') %></td>
+              <% end %>
+
+            <td>
+              <button type="button" class="btn-xs btn-block" data-toggle="modal" data-target="#qr_inactive_<%= check_in_out.id %>", id="Qr-Code_button">
+                <span class="glyphicon glyphicon-qrcode"></span>
+              </button>
+              <div class="modal fade bs-Qr_code-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Qr_Code_ModalLabel", id="qr_inactive_<%= check_in_out.id %>">
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Qr-Code - <%= check_in_out.check_in_no %></h4>
+                    </div>
+                    <div class="qrcode-container">
+                      <div class="qrcode-thumb">
+                        <%= image_tag("Check_in_out_QrCode/"+check_in_out.check_in_no.to_s+".png") %>
+                      </div>
+                      <div class="qrcode-content">
+                        <b>Check in no:</b> <%= check_in_out.check_in_no %><br>
+                        <b>Customer Code:</b> <%= check_in_out.customer_code %><br>
+                        <b>Guest no:</b> <%= check_in_out.guest_no %><br>
+                        <b>Guest:</b> <%= check_in_out.guest_name %><br>
+                        <b>Status:</b> <%= check_in_out.status %><br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+
+            <td><%= link_to 'Show', check_in_out %></td>
+            <td>
+              <%= link_to 'Edit', edit_check_in_out_path(check_in_out) %>
+            </td>
+            <td class="col-sm-1">
+              <% if check_in_out.check_in_time.nil? %>
+                  <button type="button" class="btn btn-success btn-xs btn-block" data-toggle="modal" data-target="#check_in_<%= check_in_out.id %>">Check In</button>
+              <% else %>
+                  <button type="button" class="btn btn-success btn-xs btn-block" data-toggle="modal" data-target="#check_in_<%= check_in_out.id %>" style="display: none">Check In</button>
+              <% end %>
+              <%= form_for(check_in_out) do |f| %>
+                  <div class="modal fade" id="check_in_<%= check_in_out.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h3 class="modal-title" id="myModalLabel">Check In Form</h3>
+                        </div>
+                        <div class="modal-body">
+                          <%= render 'check_in_outs/check_in', check_in_out: check_in_out %>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <%= submit_tag "Check In", class: "btn btn-primary" %>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+              <% end %>
+            </td>
+            <td class="col-sm-1">
+              <% if !check_in_out.check_out_time.nil? || check_in_out.check_in_time.nil?%>
+                  <button type="button" class="btn btn-warning btn-xs btn-block" data-toggle="modal" data-target="#check_out_<%= check_in_out.id %>", id="disable_checkinout_button" , disabled>Check Out</button>
+              <% else %>
+                  <button type="button" class="btn btn-warning btn-xs btn-block" data-toggle="modal" data-target="#check_out_<%= check_in_out.id %>">Check Out</button>
+              <% end %>
+              <%= form_for(check_in_out) do |f| %>
+                  <div class="modal fade" id="check_out_<%= check_in_out.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h3 class="modal-title" id="myModalLabel">Check Out Form</h3>
+                        </div>
+                        <div class="modal-body">
+                          <%= render 'check_in_outs/check_out', check_in_out: check_in_out %>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <%= submit_tag "Check Out", class: "btn btn-primary" %>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+              <% end %>
+            </td>
+            <td class="col-sm-1"><%= button_to 'Destroy', check_in_out, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-xs btn-block' %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <table class="table table-hover table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Check in no</th>
+        <th>Customer code</th>
+        <th>Guest no.</th>
+        <th>Guest Name</th>
+        <th>Status</th>
+        <th>Check in time</th>
+        <th>Check out time</th>
+        <th colspan="5"></th>
+      </tr>
+      </thead>
+    </table>
+    <h3>Your search did not match any result!</h3>
+<% end %>

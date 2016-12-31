@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+    <li><%= link_to 'Companies List', customers_path %></li>
+    <li><%= link_to 'Customer Staff List', customer_staffs_path %></li>
+    <li><%= link_to 'Rack List', rack_infos_path %></li>
+    <li><%= link_to 'Ticket System', tickets_path %></li>
+    <li><%= link_to 'Check In List', check_in_outs_path %></li>
+    <li><%= link_to 'Package In Out', package_in_outs_path %></li>
+<% else %>
+<% end %>
+<% if user_signed_in? %>
+    <% if current_user.try(:admin?) %>
+        <li><%= link_to 'Users', users_path %></li>
+    <% end %>
+<% end %>

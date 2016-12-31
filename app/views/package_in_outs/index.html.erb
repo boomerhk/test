@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Package In Outs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ticket no</th>
+      <th>Customer code</th>
+      <th>Quantity</th>
+      <th>Package no</th>
+      <th>Courier</th>
+      <th>Floor</th>
+      <th>Location</th>
+      <th>Package in time</th>
+      <th>Package out time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @package_in_outs.each do |package_in_out| %>
+      <tr>
+        <td><%= package_in_out.ticket_no %></td>
+        <td><%= package_in_out.customer_code %></td>
+        <td><%= package_in_out.quantity %></td>
+        <td><%= package_in_out.package_no %></td>
+        <td><%= package_in_out.Courier %></td>
+        <td><%= package_in_out.floor %></td>
+        <td><%= package_in_out.location %></td>
+        <td><%= package_in_out.package_in_time %></td>
+        <td><%= package_in_out.package_out_time %></td>
+        <td><%= link_to 'Show', package_in_out %></td>
+        <td><%= link_to 'Edit', edit_package_in_out_path(package_in_out) %></td>
+        <td><%= link_to 'Destroy', package_in_out, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Package In Out', new_package_in_out_path %>

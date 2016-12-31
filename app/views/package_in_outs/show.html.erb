@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ticket no:</strong>
+  <%= @package_in_out.ticket_no %>
+</p>
+
+<p>
+  <strong>Customer code:</strong>
+  <%= @package_in_out.customer_code %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @package_in_out.quantity %>
+</p>
+
+<p>
+  <strong>Package no:</strong>
+  <%= @package_in_out.package_no %>
+</p>
+
+<p>
+  <strong>Courier:</strong>
+  <%= @package_in_out.Courier %>
+</p>
+
+<p>
+  <strong>Floor:</strong>
+  <%= @package_in_out.floor %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @package_in_out.location %>
+</p>
+
+<p>
+  <strong>Package in time:</strong>
+  <%= @package_in_out.package_in_time %>
+</p>
+
+<p>
+  <strong>Package out time:</strong>
+  <%= @package_in_out.package_out_time %>
+</p>
+
+<%= link_to 'Edit', edit_package_in_out_path(@package_in_out) %> |
+<%= link_to 'Back', package_in_outs_path %>

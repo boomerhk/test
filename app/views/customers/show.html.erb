@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <fieldset class="info_display">
+    <legend><b>Customer Information</b></legend>
+  <p>
+    <strong>Customer code:</strong>
+    <%= @customer.customer_code %>
+  </p>
+
+  <p>
+    <strong>Customer name:</strong>
+    <%= @customer.customer_name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @customer.email %>
+  </p>
+
+  <p>
+    <strong>Phone no:</strong>
+    <%= @customer.phone_no %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @customer.address %>
+  </p>
+
+  <p>
+    <strong>Join date:</strong>
+    <%= @customer.join_date %>
+  </p>
+
+  <p>
+    <%= link_to 'Edit', edit_customer_path(@customer) %>
+    | <%= link_to 'Back', customers_path %>
+  </p>
+  </fieldset>
+
+  <fieldset>
+    <h3><b>Customer Staff List</b></h3>
+    <% @customer_staffs.each do |customer_staff| %>
+        <% if @customer.customer_code == customer_staff.customer_code %>
+            <div class="col-sm-3">
+              <div class="icon_staffs">
+                <%= image_tag("Icon.jpg", size: "100x100", id: "icon") %>
+                <div class="icon_staffs_text">
+                  <b>Staff <%= @staff_no %>: </b><%= customer_staff.staff_first_name %> <%= customer_staff.staff_last_name %><br>
+                  <b>Staff ID: </b><%= customer_staff.customer_staff_id %><br>
+                  <b>Staff Email: </b><%= customer_staff.staff_email %><br>
+                  <b>Staff Phone: </b><%= customer_staff.staff_phone %><br>
+                  <%= link_to ' Edit', edit_customer_staff_path(customer_staff) %> |
+                  <%= link_to ' Delete', customer_staff_path(customer_staff), method: :delete, data: {confirm: 'Are you sure?'} %>
+                </div>
+              </div>
+            </div>
+            <% @staff_no += 1 %>
+        <% end %>
+    <% end %>
+  </fieldset>
+
+  <hr>
+
+  <fieldset>
+    <h3><b>Customer Rack List</b></h3>
+    <table class="table table-hover table-bordered">
+      <thead>
+      <tr>
+        <th>Rack no</th>
+        <th>Type</th>
+        <th>Customer code</th>
+        <th>Total unit</th>
+        <th>Low unit</th>
+        <th>Height unit</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @rack_infos.each do |rack_info| %>
+          <% if @customer.customer_code == rack_info.customer_code %>
+            <tr>
+              <td><%= rack_info.rack_no %></td>
+              <td><%= rack_info.tpye %></td>
+              <td><%= rack_info.customer_code %></td>
+              <td><%= rack_info.total_unit %></td>
+              <td><%= rack_info.low_unit %></td>
+              <td><%= rack_info.height_unit %></td>
+              <td><%= link_to 'Show', rack_info %></td>
+              <td><%= link_to 'Edit', edit_rack_info_path(rack_info) %></td>
+              <td><%= link_to 'Destroy', rack_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </fieldset>
+</div>

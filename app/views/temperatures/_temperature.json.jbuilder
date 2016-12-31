@@ -1,0 +1,2 @@
+json.extract! temperature, :id, :date, :time, :datetime, :temperature, :rack_no, :min_temp, :max_temp, :low_warnlv, :high_warnlv, :timestamp, :created_at, :updated_at
+json.url temperature_url(temperature, format: :json)

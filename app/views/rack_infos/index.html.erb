@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rack Infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rack no</th>
+      <th>Tpye</th>
+      <th>Customer code</th>
+      <th>Total unit</th>
+      <th>Low unit</th>
+      <th>Height unit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rack_infos.each do |rack_info| %>
+      <tr>
+        <td><%= rack_info.rack_no %></td>
+        <td><%= rack_info.tpye %></td>
+        <td><%= rack_info.customer_code %></td>
+        <td><%= rack_info.total_unit %></td>
+        <td><%= rack_info.low_unit %></td>
+        <td><%= rack_info.height_unit %></td>
+        <td><%= link_to 'Show', rack_info %></td>
+        <td><%= link_to 'Edit', edit_rack_info_path(rack_info) %></td>
+        <td><%= link_to 'Destroy', rack_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rack Info', new_rack_info_path %>

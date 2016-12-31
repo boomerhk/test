@@ -1,0 +1,57 @@
+<%= form_for(customer_staff) do |f| %>
+  <% if customer_staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(customer_staff.errors.count, "error") %> prohibited this customer_staff from being saved:</h2>
+
+      <ul>
+      <% customer_staff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customer_code %>
+    <%= f.collection_select :customer_code, Customer.all, :id, :customer_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :customer_staff_id %>
+    <%= f.number_field :customer_staff_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff_first_name %>
+    <%= f.text_field :staff_first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff_last_name %>
+    <%= f.text_field :staff_last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff_email %>
+    <%= f.text_field :staff_email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff_phone %>
+    <%= f.text_field :staff_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :department %>
+    <%= f.text_field :department %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff_post %>
+    <%= f.text_field :staff_post %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

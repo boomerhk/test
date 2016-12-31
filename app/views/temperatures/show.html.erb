@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @temperature.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @temperature.time %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @temperature.datetime %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @temperature.temperature %>
+</p>
+
+<p>
+  <strong>Rack no:</strong>
+  <%= @temperature.rack_no %>
+</p>
+
+<p>
+  <strong>Min temp:</strong>
+  <%= @temperature.min_temp %>
+</p>
+
+<p>
+  <strong>Max temp:</strong>
+  <%= @temperature.max_temp %>
+</p>
+
+<p>
+  <strong>Low warnlv:</strong>
+  <%= @temperature.low_warnlv %>
+</p>
+
+<p>
+  <strong>High warnlv:</strong>
+  <%= @temperature.high_warnlv %>
+</p>
+
+<p>
+  <strong>Timestamp:</strong>
+  <%= @temperature.timestamp %>
+</p>
+
+<%= link_to 'Edit', edit_temperature_path(@temperature) %> |
+<%= link_to 'Back', temperatures_path %>

@@ -1,0 +1,1 @@
+json.array! @package_in_outs, partial: 'package_in_outs/package_in_out', as: :package_in_out

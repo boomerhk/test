@@ -1,0 +1,1 @@
+json.partial! "check_in_outs/check_in_out", check_in_out: @check_in_out
